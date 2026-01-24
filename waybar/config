@@ -75,15 +75,17 @@
     "format-connected": "󰂱",
     "format-no-controller": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "omarchy-launch-bluetooth"
+    "on-click": "omarchy-launch-bluetooth" // TODO
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "omarchy-launch-audio",
-    "on-click-right": "pamixer -t",
+    "on-click-right": "pgrep pacmixer >/dev/null 2>&1 && killall pacmixer || kitty -e pacmixer",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
     "format-muted": "",
+    "on-click-left": "pactl set-sink-volume @DEFAULT_SINK@ -100%", 
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
     "format-icons": {
       "headphone": "",
       "default": ["", "", ""]
