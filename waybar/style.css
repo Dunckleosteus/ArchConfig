@@ -23,7 +23,7 @@
   transition-duration: 120ms;
 }
 #custom-applauncher:hover {
-  background-image: linear-gradient(to bottom, #ac82e9 100%);
+  background-image: linear-gradient(to bottom, #58BC82 100%);
   color: #141216;
   transition-duration: 120ms;
 }

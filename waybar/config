@@ -28,7 +28,7 @@
     "interval": 5,
     "format": "󰍛",
     "on-click": "omarchy-launch-or-focus-tui btop",
-    "on-click-right": "kitty"
+    "on-click-right": "pgrep htop >/dev/null 2>&1 && killall htop || kitty -e htop"
   },
   "clock": {
     "format": "{:L%A %H:%M}",
