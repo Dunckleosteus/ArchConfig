@@ -64,11 +64,13 @@ input type:keyboard {
 }
 
 # adding gaps inside and outside windows
-gaps inner 3px
-gaps outer 3px
+gaps inner 2px
+gaps outer 2px
+gaps top 2px
+gaps bottom 2px
 
-default_border pixel 3px
-default_floating_border pixel 3px
+default_border pixel 2px
+default_floating_border pixel 2px
 #
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.

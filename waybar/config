@@ -2,13 +2,11 @@
   "reload_style_on_change": true,
   "layer": "top",
   "position": "top",
-  "spacing": 0,
-  "height": 26,
+  "spacing": 2,
   "modules-left": ["sway/workspaces"],
   "modules-center": [ "custom/applauncher", "clock"],
   "modules-right": [
-    "group/tray-expander",
-    "bluetooth",
+    "tray", 
     "network",
     "pulseaudio",
     "cpu",
@@ -16,24 +14,30 @@
   ],
    "sway/workspaces": {
     "disable-scroll": true,
-    "all-outputs": false,
-    "tooltip": false
+    "all-outputs": true,
+    "tooltip": false,
+    "format": "{icon}",
+      "format-icons": {
+        "default": "",
+        "active": ""
+      },
   },
  "custom/applauncher": {
-    "format": "O",
+    "format": "\uf085",
     "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15",
     "tooltip": false
   },
   "cpu": {
     "interval": 5,
-    "format": "󰍛",
-    "on-click": "omarchy-launch-or-focus-tui btop",
+    "format": "\uf2db",
+    "tooltip": true,
     "on-click-right": "pgrep htop >/dev/null 2>&1 && killall htop || kitty -e htop"
   },
   "clock": {
     "format": "{:L%A %H:%M}",
     "format-alt": "{:L%d %B W%V %Y}",
-    "tooltip": false
+    "tooltip": false,
+    "timezone": "Europe/Paris",
   },
 
   "network": {
@@ -50,15 +54,20 @@
     "on-click": "pgrep impala >/dev/null 2>&1 && killall impala || kitty -e impala"
   },
   "battery": {
-    "format": "{capacity}% {icon}",
-    "format-discharging": "{icon}",
-    "format-charging": "{icon}",
-    "format-plugged": "",
-    "format-icons": {
-      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+      "states": {
+      "warning": 30,
+      "critical": 15
     },
-    "format-full": "󰂅",
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄{capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-full": "󱈑 {capacity}%",
+    "format-icons": [
+      "󱊡",
+      "󱊢",
+      "󱊣"
+    ],
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 5,
@@ -68,18 +77,10 @@
       "critical": 10
     }
   },
-  "bluetooth": {
-    "format": "",
-    "format-off": "󰂲",
-    "format-disabled": "󰂲",
-    "format-connected": "󰂱",
-    "format-no-controller": "",
-    "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "omarchy-launch-bluetooth" // TODO
-  },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click-right": "pgrep pacmixer >/dev/null 2>&1 && killall pacmixer || kitty -e pacmixer",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
     "format-muted": "",
@@ -88,27 +89,12 @@
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
     "format-icons": {
       "headphone": "",
-      "default": ["", "", ""]
-    }
-  },
-  "group/tray-expander": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "tray-group-item"
+      "default": ["\uf026", "\uf027", "\uf028"]
     },
-    "modules": ["custom/expand-icon", "tray"]
-  },
-  "custom/expand-icon": {
-    "format": "",
-    "tooltip": false,
-    "on-scroll-up": "",
-    "on-scroll-down": "",
-    "on-scroll-left": "",
-    "on-scroll-right": ""
+    "format-muted": "\uf00d {volume}%"
   },
   "tray": {
-    "icon-size": 12,
-    "spacing": 17
+    "icon-size": 20,
+    "spacing": 10
   }
 }
