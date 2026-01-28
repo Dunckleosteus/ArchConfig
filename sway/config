@@ -15,9 +15,8 @@ set $menu wofi --show drun
 set $file_explorer nautilus
 # internet browser
 set $browser zen-browser
+
 # Numbers for azerty 
-
-
 set $1 ampersand
 set $2 eacute 
 set $3 quotedbl

@@ -12,7 +12,6 @@
   /* Linear gradients are used because it makes less harsh rounded border radius, gtk bug :p */
   background-image: linear-gradient(to bottom, #141216 100%);
   opacity: 0.8;
-  border-radius: 10px;
   padding: 0px;
   border-style: none;
 }
@@ -104,9 +103,15 @@
   background-color: #222222;
   margin: 6px;
   padding: 4px 8px;
-  color: #d8cab8;
+  border-radius:10px;
 }
-
+#memory {
+  color: #d8cab8;
+  background-color: #222222;
+  margin: 6px;
+  padding: 4px 8px;
+  border-radius:10px;
+}
 #battery {
   background-color: #222222;
   color: #d8cab8;

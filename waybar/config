@@ -10,22 +10,32 @@
     "network",
     "pulseaudio",
     "cpu",
+    "memory",
     "battery"
   ],
-   "sway/workspaces": {
+   "sway/workspaces": { // TODO: display current workspace
     "disable-scroll": true,
     "all-outputs": true,
+    "disable-scroll": false,
     "tooltip": false,
-    "format": "{icon}",
-      "format-icons": {
-        "default": "",
-        "active": ""
-      },
+    "format": "{index}",
+    "persistent-workspaces": {
+      "1":[],
+      "2":[],
+      "3":[],
+      "4":[],
+    }
   },
  "custom/applauncher": {
     "format": "\uf085",
     "on-click": "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15",
     "tooltip": false
+  },
+  "memory":{
+    "interval": 30,
+	  "format": "",
+	  "max-length": 10,
+    "tooltip-format": "{used}/{total} GB",
   },
   "cpu": {
     "interval": 5,
