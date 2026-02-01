@@ -8,6 +8,7 @@ I installed the following apps on my system:
 - `lazygit`
 - `sway` for window manager 
 - `swaybg` for adding backgrounds to sway
+- `swaylock` for lock screen
 - `impala` for network
 - `power-profile-daemon` for tweaking power profile
 - `tlp` is a dependency for power-profile-deamon
