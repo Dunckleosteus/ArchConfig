@@ -3,7 +3,7 @@
 current=$(powerprofilesctl get)
 
 perf="⚡ Performance"
-bal="⚖ Balanced"
+bal="⚖  Balanced"
 save="🪫 Power Saver"
 
 case "$current" in
@@ -21,7 +21,7 @@ case "$current" in
     ;;
 esac
 
-menu=$(printf "%s\n%s\n%s\n──────────\n⏻ Power Off\n🔄 Reboot\n🌙 Suspend\n🔒 Lock" \
+menu=$(printf "%s\n%s\n%s\n──────────\n⏻ Power Off\n🔄 Reboot\n🌙 Lock" \
   "$perf" "$bal" "$save")
 
 choice=$(echo "$menu" | wofi \
@@ -46,11 +46,8 @@ case "$choice" in
   *Reboot*)
     systemctl reboot
     ;;
-  *Suspend*)
-    systemctl suspend
-    ;;
   *Lock*)
-    swaylock
+    swaylock -f -c 000000
     ;;
 esac
 
