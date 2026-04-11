@@ -12,7 +12,7 @@ set $term kitty
 # application launcher
 set $menu wofi --show drun
 # file explorer
-set $file_explorer nautilus
+set $file_explorer thunar
 # internet browser
 set $browser zen-browser
 

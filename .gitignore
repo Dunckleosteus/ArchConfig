@@ -1,24 +1,9 @@
-dconf*
-epiphany*
-evolution*
-go*
-goa-1.0*
-gtk-3.0*
-htop*
-ibus*
-mimeapps.list*
-nvim*
-obsidian*
-pavucontrol.ini*
-pnpm*
-pulse*
-user-dirs.dirs*
-user-dirs.locale*
-.gsd-keyboard.settings-ported
-xfce4/*
-lazygit
-Thunar
-pacmixer
-Code - OSS*
-Code*
-Thonny
+# Ingnore everything
+*
+
+# Allow for specific files/folders
+!waybar/
+!kitty/
+!sway/
+!gtk*
+
