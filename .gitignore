@@ -1,9 +1,134 @@
-# Ingnore everything
-*
+# Arch Linux Configuration - .gitignore
+# Ignore everything by default
+/*
+!
 
-# Allow for specific files/folders
-!waybar/
-!kitty/
+# Allow important configuration directories and files
+
+# Window Manager and Compositor
 !sway/
-!gtk*
+!swaybg/
+!swaylock/
+
+# Status Bar and Launcher
+!waybar/
+!wofi/
+
+# Terminal
+!kitty/
+
+# Text Editor
+!nvim/
+
+# Git Tools
+!lazygit/
+!yay/
+
+# Network
+!impala/
+
+# Power Management
+!power-profile-daemon/
+!tlp/
+
+# Display Manager
+!ly/
+
+# Zen Browser
+!zen-browser/
+!zen/
+
+# Autostart applications
+!autostart/
+
+# Audio
+!pulse/
+!pavucontrol.ini
+
+# MIME type associations
+!mimeapps.list
+
+# User directories configuration
+!user-dirs.dirs
+!user-dirs.locale
+
+# GTK themes
+!gtk-3.0/
+!gtk-4.0/
+
+# Other important config files
+!pacmixer/
+!htop/
+!uv/
+
+# README and gitignore itself
+!.gitignore
+!README.md
+
+# Ignore specific files and directories we don't want to track
+
+# Cache and temporary files
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local configuration overrides
+*.local
+
+# Backups
+*.bak
+*.old
+*.orig
+*.swp
+*.swo
+
+# Logs
+*.log
+*.logs/
+
+# IDE and editor specific
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS and application specific
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Python
+*.egg-info/
+*.egg/
+dist/
+build/
+
+# Go
+bin/
+pkg/
+
+# Rust
+Cargo.lock
+target/
+
+# Environment files
+.env
+.env.*
+
+# Database files
+*.db
+*.tdb
+*.sqlite
+
+# System-specific configurations (machine-generated)
+dconf/
+
+# Ignore large theme collections that are not essential
+# (uncomment if you don't want to track kitty themes)
+# kitty/kitty-themes/
 
