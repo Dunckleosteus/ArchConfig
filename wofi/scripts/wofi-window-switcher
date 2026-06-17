@@ -1,0 +1,6 @@
+#!/bin/bash
+
+swaymsg -t get_tree | \
+jq -r '.. | select(.type? == "con" and .nodes == []) | "\(.id): \(.name // .app_id // "Unnamed")"' | \
+wofi --show dmenu | \
+{ read -r line; id=${line%%:*}; swaymsg "[con_id=$id]" focus; }
