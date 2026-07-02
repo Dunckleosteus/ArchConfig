@@ -3,10 +3,10 @@
   "layer": "top",
   "position": "top",
   "spacing": 2,
-  "modules-left": ["sway/workspaces"],
+  "modules-left": ["sway/workspaces", "wlr/taskbar"],
   "modules-center": [ "custom/applauncher", "clock"],
   "modules-right": [
-    //"tray", 
+    "tray",
     "network",
     "pulseaudio",
     "cpu",
@@ -101,9 +101,32 @@
       "default": ["\uf026", "\uf027", "\uf028"]
     },
     "format-muted": "\uf00d {volume}%"
-  }//,
-  //"tray": {
-  //  "icon-size": 20,
-  //  "spacing": 10
-  //}
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10,
+    "icons": {
+      "blueman": "bluetooth"
+    }
+  },
+  "wlr/taskbar": {
+      "format": "{icon}",
+      "icon-size": 20,
+      "icon-theme": "Numix-Circle",
+      "tooltip-format": "{title}",
+      "on-click": "activate",
+      "on-click-middle": "close",
+      "ignore-list": [
+        "Alacritty"
+      ],
+      "app_ids-mapping": {
+        "firefoxdeveloperedition": "firefox-developer-edition"
+      },
+      "rewrite": {
+          "Firefox Web Browser": "Firefox",
+          "Foot Server": "Terminal",
+          ".*(steam_app_[0-9]+).*": "Game"
+
+      }
+  }
 }
