@@ -17,3 +17,26 @@ I installed the following apps on my system:
 - `wofi`
 - `neovim` with astrovim installed
 - `kitty` for the terminal
+
+# Configuration Notes
+
+## Window Switcher
+- Added window switcher script (`wofi/scripts/wofi-window-switcher`) with app icons
+- Bound to `Super+Tab` in sway config
+- Uses `swaymsg`, `jq`, and `wofi` to display and switch between open windows
+
+## Waybar Setup
+- Waybar launched via `swaybar_command` in sway config
+- Added `exec env LC_ALL=en_GB.utf8 waybar` in sway config for reliability
+- Tray module enabled in waybar/config for system icons
+
+## Bluetooth (Fairphone)
+- Using PipeWire audio stack (replaced PulseAudio redundancy)
+- Required packages: `pipewire`, `pipewire-pulse`, `pipewire-alsa`
+- Blueman applet (`blueman-applet`) for GUI Bluetooth management
+- Waybar tray displays Bluetooth status
+- A2DP profile support via `pipewire-pulse`
+
+## Git Recovery
+- Restored configuration from git stash after system issues
+- Added `.gitignore` entry for `htop/htop_history` (runtime file)

@@ -6,9 +6,9 @@
   "modules-left": ["sway/workspaces"],
   "modules-center": [ "custom/applauncher", "clock"],
   "modules-right": [
-    "tray", 
+    //"tray", 
     "network",
-    "pulseaudio",
+    "pipewire", // I uninstalled pulseaudio and replaced it with PipeWire
     "cpu",
     "memory",
     "battery"
@@ -102,9 +102,9 @@
       "default": ["\uf026", "\uf027", "\uf028"]
     },
     "format-muted": "\uf00d {volume}%"
-  },
-  "tray": {
-    "icon-size": 20,
-    "spacing": 10
-  }
+  }//,
+  //"tray": {
+  //  "icon-size": 20,
+  //  "spacing": 10
+  //}
 }
