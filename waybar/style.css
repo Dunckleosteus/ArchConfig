@@ -10,7 +10,7 @@
 
 #waybar {
   /* Linear gradients are used because it makes less harsh rounded border radius, gtk bug :p */
-  background-image: linear-gradient(to bottom, #141216 100%);
+  background-color: #141216;
   opacity: 0.8;
   padding: 0px;
   border-style: none;
@@ -23,7 +23,7 @@
 #tray,
 #workspaces,
 #pulseaudio {
-  background-image: linear-gradient(to bottom, #27232b 100%);
+  background-color: #27232b;
 
   margin: 6px;
   margin-right: 0px;
@@ -38,7 +38,7 @@
 }
 
 #pulseaudio:hover {
-  background-image: linear-gradient(to bottom, #58BC82 100%);
+  background-color: #58BC82;
   color: #141216;
   transition-duration: 120ms;
 }
@@ -48,7 +48,7 @@
   transition-duration: 120ms;
 }
 #custom-applauncher:hover {
-  background-image: linear-gradient(to bottom, #58BC82 100%);
+  background-color: #58BC82;
   color: #141216;
   transition-duration: 120ms;
 }
@@ -59,7 +59,7 @@
   padding: 4px;
 }
 #tray menu menuitem {
-  background-image: linear-gradient(to bottom, #27232b 100%);
+  background-color: #27232b;
 
   margin: 3px;
   color: #d8cab8;
@@ -68,7 +68,7 @@
   border-color: #27232b;
 }
 #tray menu menuitem:hover {
-  background-image: linear-gradient(to bottom, #27232b 100%);
+  background-color: #27232b;
   color: #58BC82;
   font-weight: bold;
 }

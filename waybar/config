@@ -8,13 +8,12 @@
   "modules-right": [
     //"tray", 
     "network",
-    "pipewire", // I uninstalled pulseaudio and replaced it with PipeWire
+    "pulseaudio",
     "cpu",
     "memory",
     "battery"
   ],
    "sway/workspaces": { // TODO: display current workspace
-    "disable-scroll": true,
     "all-outputs": true,
     "disable-scroll": false,
     "tooltip": false,

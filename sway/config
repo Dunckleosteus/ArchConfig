@@ -46,22 +46,11 @@ exec swayidle -w timeout 300 'swaylock -f -c 000000' \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 # Start Bluetooth manager tray applet
-exec blueman-applet
+# exec blueman-applet
 
 # Start waybar
-exec env LC_ALL=en_GB.utf8 waybar
+# exec env LC_ALL=en_GB.utf8 waybar
 
-### Input configuration
-#
-# Example configuration:
-#
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
 input type:keyboard {
 	xkb_layout "fr"
 }
@@ -238,8 +227,9 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+
 bar {
-    swaybar_command env LC_ALL=en_GB.utf8 waybar
+    swaybar_command waybar
 }
 
 client.focused          #58BC82 #58BC82 #58BC82 #58BC82 #58BC82
