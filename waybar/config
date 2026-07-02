@@ -7,6 +7,7 @@
   "modules-center": [ "custom/applauncher", "clock"],
   "modules-right": [
     "tray",
+    //"bluetooth",
     "network",
     "pulseaudio",
     "cpu",
@@ -32,16 +33,33 @@
   },
   "memory":{
     "interval": 30,
-	  "format": "",
+    "format": "{used:0.1f}G/{total:0.1f}G ",
 	  "max-length": 10,
     "tooltip-format": "{used}/{total} GB",
   },
+
+  //"cpu": {
+  //  "interval": 5,
+  //  "format": "\uf2db",
+  //  "tooltip": true,
+  //  "on-click-right": "pgrep htop >/dev/null 2>&1 && killall htop || kitty -e htop"
+  //},
+
   "cpu": {
-    "interval": 5,
-    "format": "\uf2db",
-    "tooltip": true,
-    "on-click-right": "pgrep htop >/dev/null 2>&1 && killall htop || kitty -e htop"
+     "interval": 5,
+     "format": "{icon0}{icon1}{icon2}{icon3}",
+     "format-icons": [
+          "<span color='#69ff94'>▁</span>", // green
+          "<span color='#2aa9ff'>▂</span>", // blue
+          "<span color='#f8f8f2'>▃</span>", // white
+          "<span color='#f8f8f2'>▄</span>", // white
+          "<span color='#ffffa5'>▅</span>", // yellow
+          "<span color='#ffffa5'>▆</span>", // yellow
+          "<span color='#ff9977'>▇</span>", // orange
+          "<span color='#dd532e'>█</span>"  // red
+    ]
   },
+
   "clock": {
     "format": "{:L%A %H:%M}",
     "format-alt": "{:L%d %B W%V %Y}",
@@ -104,10 +122,7 @@
   },
   "tray": {
     "icon-size": 20,
-    "spacing": 10,
-    "icons": {
-      "blueman": "bluetooth"
-    }
+    "spacing": 10
   },
   "wlr/taskbar": {
       "format": "{icon}",
@@ -115,18 +130,18 @@
       "icon-theme": "Numix-Circle",
       "tooltip-format": "{title}",
       "on-click": "activate",
-      "on-click-middle": "close",
-      "ignore-list": [
-        "Alacritty"
-      ],
-      "app_ids-mapping": {
-        "firefoxdeveloperedition": "firefox-developer-edition"
-      },
-      "rewrite": {
-          "Firefox Web Browser": "Firefox",
-          "Foot Server": "Terminal",
-          ".*(steam_app_[0-9]+).*": "Game"
-
-      }
+      "on-click-middle": "close"
+  },
+  "bluetooth": {
+	  // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	  "format": " {status}",
+	  "active-first": true,
+	  "all-outputs": true,
+	  "format-disabled": "", // an empty format will hide the module
+	  "format-connected": " {num_connections} connected",
+	  "tooltip-format": "{controller_alias}\t{controller_address}",
+	  "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	  "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	  "on-click": "blueman-manager"
   }
 }

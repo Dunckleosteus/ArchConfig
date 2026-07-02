@@ -46,7 +46,7 @@ exec swayidle -w timeout 300 'swaylock -f -c 000000' \
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 # Start Bluetooth manager tray applet
-# exec blueman-applet
+exec blueman-applet & >> /dev/null 
 
 # Start waybar
 # exec env LC_ALL=en_GB.utf8 waybar
