@@ -1,6 +1,28 @@
 #!/bin/bash
 
-swaymsg -t get_tree | \
-jq -r '.. | select(.type? == "con" and .nodes == []) | "\(.id): \(.name // .app_id // "Unnamed")"' | \
-wofi --show dmenu | \
-{ read -r line; id=${line%%:*}; swaymsg "[con_id=$id]" focus; }
+swaymsg -t get_tree 2>/dev/null | \
+jq -r '
+  .. | objects | select(.type? == "con" and .nodes == [] and .app_id != null) |
+  {
+    id: .id,
+    name: (.name // .app_id // "Unnamed"),
+    app_id: (.app_id // ""),
+    icon: (
+      if .app_id | test("firefox"; "i") or test("zen"; "i") or test("chrome"; "i") or test("brave"; "i") then "🌕 "
+      elif .app_id | test("kitty"; "i") or test("alacritty"; "i") or test("foot"; "i") or test("wezterm"; "i") or test("vibe"; "i") then "🦀 "
+      elif .app_id | test("nvim"; "i") or test("neovide"; "i") or test("code"; "i") or test("vscode"; "i") or test("obsidian"; "i") then "🦖 "
+      elif .app_id | test("thunar"; "i") or test("nautilus"; "i") or test("dolphin"; "i") then "🔥 "
+      elif .app_id | test("spotify"; "i") or test("mpv"; "i") or test("music"; "i") then "🐸 "
+      elif .app_id | test("discord"; "i") or test("telegram"; "i") or test("signal"; "i") then "🐊 "
+      elif .app_id | test("libreoffice"; "i") or test("word"; "i") then "🦠 "
+      elif .app_id | test("gimp"; "i") or test("paint"; "i") then "🦑 "
+      elif .app_id | test("blender"; "i") or test("steam"; "i") then "🐙 "
+      elif .app_id | test("obs"; "i") then "🪼 "
+      else "🪟 "
+      end
+    )
+  } |
+  select(.name != null and .name != "") |
+  "\(.id) \(.icon)\(.name)"
+' | wofi --show dmenu --style ~/.config/wofi/style.css | \
+{ read -r line; id=$(echo "$line" | awk '{print $1}'); swaymsg "[con_id=$id]" focus >/dev/null 2>&1; }

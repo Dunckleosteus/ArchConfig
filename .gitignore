@@ -132,3 +132,6 @@ dconf/
 # (uncomment if you don't want to track kitty themes)
 # kitty/kitty-themes/
 
+# htop runtime files
+htop/htop_history
+
