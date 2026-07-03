@@ -45,8 +45,12 @@ exec swayidle -w timeout 300 'swaylock -f -c 000000' \
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+# Start gnome-keyring for Nextcloud client
+# (must be started before any apps that need it)
+exec bash -c 'dbus-update-activation-environment --all && eval $(gnome-keyring-daemon --start --components=secrets)'
 # Start Bluetooth manager tray applet
 exec blueman-applet & >> /dev/null 
+exec nextcloud & >> /dev/null 
 
 # Start waybar
 # exec env LC_ALL=en_GB.utf8 waybar
