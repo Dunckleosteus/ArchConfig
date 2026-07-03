@@ -4,14 +4,13 @@
   border: none;
   font-size: 16px;
   padding: 0px;
-  min-height: 10px;
+  min-height: 8px;
   background: transparent;
 }
 
 #waybar {
   /* Linear gradients are used because it makes less harsh rounded border radius, gtk bug :p */
-  background-color: #141216;
-  opacity: 0.8;
+  background-color: transparent;
   padding: 0px;
   border-style: none;
 }
@@ -117,9 +116,30 @@
   color: #d8cab8;
   margin-right: 0.2cm;
 }
-#battery.warning,
-#battery.critical,
-#battery.urgent {
-  color: #1d2021;
-  background-color: #fc4649;
+
+#battery.charging {
+    color: #ffffff;
+    background-color: #26A65B;
+}
+
+#battery.warning:not(.charging) {
+    background-color: #ffbe61;
+    color: black;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
