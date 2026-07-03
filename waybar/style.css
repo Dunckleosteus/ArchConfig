@@ -17,7 +17,7 @@
 .modules-center, 
 .modules-left,
 .modules-right {
-  margin: 2px;
+  margin: 3 3 0 3px;
   background-color: #27232b;
   border-radius: 8px;
   opacity: 0.8;
@@ -35,9 +35,17 @@
   padding: 0 5px;
   border-radius: 10px;
   margin: 5px; 
+  margin-left: 0px; 
 }
+
+#taskbar {
+  background: #3a3a3a;
+  margin-right: 0px; 
+}
+
 #workspaces {
   margin-left: 0px;
+  background: #3a3a3a;
 }
 
 #network {
@@ -51,7 +59,7 @@
 }
 
 #clock {
-  margin-right: 6px;
+  margin-right: 0px;
   background: #3a3a3a;
 }
 
@@ -61,6 +69,7 @@
 }
 
 #custom-applauncher {
+  margin-left: 0px; 
   font-weight: bold;
   transition-duration: 120ms;
   background: #3a3a3a;

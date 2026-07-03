@@ -37,14 +37,6 @@
 	  "max-length": 10,
     "tooltip-format": "{used}/{total} GB",
   },
-
-  //"cpu": {
-  //  "interval": 5,
-  //  "format": "\uf2db",
-  //  "tooltip": true,
-  //  "on-click-right": "pgrep htop >/dev/null 2>&1 && killall htop || kitty -e htop"
-  //},
-
   "cpu": {
      "interval": 5,
      "format": "{icon0}{icon1}{icon2}{icon3}",
@@ -83,7 +75,7 @@
   "battery": {
       "states": {
       "warning": 30,
-      "critical": 15
+      "critical": 20
     },
     "format": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
