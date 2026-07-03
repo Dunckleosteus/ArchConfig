@@ -4,7 +4,7 @@
   border: none;
   font-size: 15px;
   padding: 0px;
-  min-height: 4px;
+  min-height: 8px;
   background: transparent;
 }
 
@@ -14,21 +14,12 @@
   padding: 0px;
   border-style: none;
 }
-.modules-center {
-  background-color: #27232b;
-  border-radius: 0px 0px 15px 15px;
-  opacity: 0.8;
-  padding: 0 15px;
-}
-.modules-left {
-  background-color: #27232b;
-  border-radius: 0px 0px 15px 0px;
-  opacity: 0.8;
-  padding: 0 15px;
-}
+.modules-center, 
+.modules-left,
 .modules-right {
+  margin: 2px;
   background-color: #27232b;
-  border-radius: 0px 0px 0px 15px;
+  border-radius: 8px;
   opacity: 0.8;
   padding: 0 15px;
 }
@@ -42,16 +33,21 @@
 #taskbar,
 #tray {
   padding: 0 5px;
-  border-radius: 15px 15px 15px 15px;
+  border-radius: 10px;
   margin: 5px; 
+}
+#workspaces {
+  margin-left: 0px;
 }
 
 #network {
   background: #3a3a3a;
+  font-size: 22px;
 }
 
 #pulseaudio {
   background: #3a3a3a;
+  font-size: 22px;
 }
 
 #clock {
@@ -143,7 +139,7 @@
 #battery {
   background-color: #222222;
   color: #d8cab8;
-  margin-right: 0.2cm;
+  margin-right: 0px;
 }
 
 #battery.charging {
