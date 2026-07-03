@@ -49,14 +49,14 @@
      "interval": 5,
      "format": "{icon0}{icon1}{icon2}{icon3}",
      "format-icons": [
-          "<span color='#69ff94'>▁</span>", // green
-          "<span color='#2aa9ff'>▂</span>", // blue
-          "<span color='#f8f8f2'>▃</span>", // white
-          "<span color='#f8f8f2'>▄</span>", // white
-          "<span color='#ffffa5'>▅</span>", // yellow
-          "<span color='#ffffa5'>▆</span>", // yellow
-          "<span color='#ff9977'>▇</span>", // orange
-          "<span color='#dd532e'>█</span>"  // red
+          "<span color='#a0a8b3'>▁</span>", // Ironbreaker - light load
+          "<span color='#c7c7c7'>▂</span>", // Stormhost Silver
+          "<span color='#5b6871'>▃</span>", // Leadbelcher
+          "<span color='#5b6871'>▄</span>", // Leadbelcher
+          "<span color='#00a0d8'>▅</span>", // Baharroth Blue
+          "<span color='#00a0d8'>▆</span>", // Baharroth Blue
+          "<span color='#9a1115'>▇</span>", // Mephiston Red
+          "<span color='#db1e27'>█</span>"  // Wild Rider Red - max load
     ]
   },
 

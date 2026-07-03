@@ -2,9 +2,9 @@
   /* General taskbar font, I like maple mono ^-^*/
   font-family: "SauceCodePro";
   border: none;
-  font-size: 16px;
+  font-size: 15px;
   padding: 0px;
-  min-height: 8px;
+  min-height: 4px;
   background: transparent;
 }
 
@@ -14,52 +14,77 @@
   padding: 0px;
   border-style: none;
 }
+.modules-center {
+  background-color: #27232b;
+  border-radius: 0px 0px 15px 15px;
+  opacity: 0.8;
+  padding: 0 15px;
+}
+.modules-left {
+  background-color: #27232b;
+  border-radius: 0px 0px 15px 0px;
+  opacity: 0.8;
+  padding: 0 15px;
+}
+.modules-right {
+  background-color: #27232b;
+  border-radius: 0px 0px 0px 15px;
+  opacity: 0.8;
+  padding: 0 15px;
+}
 
 #battery,
 #network,
 #clock,
 #custom-applauncher,
-#tray,
 #workspaces,
-#pulseaudio {
-  background-color: #27232b;
+#pulseaudio,
+#taskbar,
+#tray {
+  padding: 0 5px;
+  border-radius: 15px 15px 15px 15px;
+  margin: 5px; 
+}
 
-  margin: 6px;
-  margin-right: 0px;
-  padding: 4px 8px;
-  border-radius: 8px;
-  color: #d8cab8;
-  transition-duration: 120ms;
+#network {
+  background: #3a3a3a;
+}
+
+#pulseaudio {
+  background: #3a3a3a;
 }
 
 #clock {
   margin-right: 6px;
+  background: #3a3a3a;
 }
 
 #pulseaudio:hover {
-  background-color: #58BC82;
-  color: #141216;
+  background-color: #4a4a4a;
   transition-duration: 120ms;
 }
 
 #custom-applauncher {
   font-weight: bold;
   transition-duration: 120ms;
+  background: #3a3a3a;
 }
 #custom-applauncher:hover {
-  background-color: #58BC82;
-  color: #141216;
+  background-color: #4a4a4a;
   transition-duration: 120ms;
 }
 
+#tray {
+  background: #3a3a3a;
+}
+
 #tray menu {
-  background-color: #141216;
+  background-color: #27232b;
   color: #d8cab8;
   padding: 4px;
 }
 #tray menu menuitem {
   background-color: #27232b;
-
   margin: 3px;
   color: #d8cab8;
   border-radius: 4px;
@@ -67,50 +92,54 @@
   border-color: #27232b;
 }
 #tray menu menuitem:hover {
-  background-color: #27232b;
-  color: #58BC82;
+  background-color: #3a3a3a;
+  color: #d8cab8;
   font-weight: bold;
 }
-
 #workspaces button {
   transition-duration: 100ms;
   all: initial;
   min-width: 0;
   font-weight: bold;
   color: #d8cab8;
-  margin-right: 0.2cm;
-  margin-left: 0.2cm;
+  margin: 0 5px;
+  border-radius: 15px;
 }
 
 #workspaces button:hover {
   transition-duration: 120ms;
   color: #fcb167;
+  background: #4a4a4a;
 }
 #workspaces button.focused {
-  color: #58BC82;
+  color: #26A65B;
   font-weight: bold;
+  background: #3a3a3a;
 }
 #workspaces button.active {
-  color: #58BC82;
+  color: #26A65B;
   font-weight: bold;
+  background: #3a3a3a;
 }
 #workspaces button.urgent {
   color: #fcb167;
+  background: #3a3a3a;
 }
 #cpu {
   color: #d8cab8;
-  background-color: #222222;
+  background: #3a3a3a;
   margin: 6px;
   padding: 4px 8px;
   border-radius:10px;
 }
 #memory {
   color: #d8cab8;
-  background-color: #222222;
+  background: #3a3a3a;
   margin: 6px;
   padding: 4px 8px;
   border-radius:10px;
 }
+
 #battery {
   background-color: #222222;
   color: #d8cab8;
