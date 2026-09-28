@@ -135,3 +135,5 @@ dconf/
 # htop runtime files
 htop/htop_history
 
+kitty/current-theme.conf
+nvim/*

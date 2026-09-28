@@ -16,17 +16,17 @@ set $file_explorer thunar
 # internet browser
 set $browser zen-browser
 
-# Numbers for azerty 
-set $1 ampersand
-set $2 eacute 
-set $3 quotedbl
-set $4 apostrophe
-set $5 parenleft
-set $6 egrave 
-set $7 minus
-set $8 underscore
-set $9 ccedilla
-set $0 agrave
+# Numbers for azerty (commented out to avoid conflicts with omarchy bindings)
+# set $1 ampersand
+# set $2 eacute 
+# set $3 quotedbl
+# set $4 apostrophe
+# set $5 parenleft
+# set $6 egrave 
+# set $7 minus
+# set $8 underscore
+# set $9 ccedilla
+# set $0 agrave
 
 ### Output configuration
 # desktop wallpaper
@@ -73,146 +73,281 @@ default_floating_border pixel 2px
 
 ### Key bindings
 #
+# Omarchy-inspired hotkeys (Super/Mod4 based)
+# Reference: https://omarchy.org/manual/hotkeys/
+#
 # Basics:
 #
-    bindsym $mod+Shift+Escape exec 'swaylock -f -c 000000'
-    # Start a terminal
-    bindsym $mod+Return exec $term
-    bindsym $mod+Shift+b exec $file_explorer
-    bindsym $mod+z exec $browser
-    bindsym Ctrl+h exec ~/.config/wofi/scripts/cheatsheet.sh
+    # Omarchy: Super + Space -> Omarchy menu (apps and everything else)
+    bindsym $mod+space exec $menu
 
-    # Kill focused window
+    # Omarchy: Super + Alt + Space -> Apps menu
+    # TODO: Need to implement separate apps menu
+
+    # Omarchy: Super + Escape -> System menu (suspend, restart, etc)
+    bindsym $mod+Escape exec wofi --show power  # TODO: Implement proper system menu
+
+    # Omarchy: Super + Ctrl + L -> Lock computer
+    bindsym $mod+Ctrl+l exec swaylock -f -c 000000
+
+    # Omarchy: Super + W or Super + Q -> Close window
+    bindsym $mod+w kill
     bindsym $mod+q kill
 
-    # Start your launcher
-    bindsym $mod+d exec $menu
+    # Omarchy: Ctrl + Alt + Del -> Close all windows
+    bindsym Ctrl+Alt+Delete kill all
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+    # Start a terminal (Omarchy: Super + Return)
+    bindsym $mod+Return exec $term
+
+    # Omarchy: Super + Shift + Return -> Browser
+    bindsym $mod+Shift+Return exec $browser
+
+    # Omarchy: Super + Shift + F -> File manager
+    bindsym $mod+Shift+f exec $file_explorer
+
+    # Omarchy: Super + K -> Show all keyboard bindings
+    bindsym $mod+k exec ~/.config/wofi/scripts/cheatsheet.sh
+
+    # Omarchy: Super + T -> Toggle window between tiling/floating
+    bindsym $mod+t floating toggle
+
+    # Omarchy: Super + J -> Toggle window position (horizontal/vertical)
+    # TODO: Sway doesn't have direct equivalent for this
+
+    # Omarchy: Super + O -> Toggle popping window into sticky'n'floating
+    # TODO: Sway doesn't have sticky floating
+
+    # Omarchy: Super + L -> Toggle between dwindle and scrolling layout
+    # TODO: Sway uses different layout system
+
+    # Omarchy: Super + P -> Toggle pseudo window style
+    # TODO: Not applicable in sway
+
+    # Omarchy: Super + F -> Go full screen
+    bindsym $mod+f fullscreen
+
+    # Omarchy: Super + Alt + F -> Go full width
+    # TODO: Need to implement full width
+
+    # Omarchy: Super + Ctrl + F -> Go full screen inside window
+    # TODO: Not applicable in sway
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Ctrl+h for cheatsheet
+    bindsym Ctrl+h exec ~/.config/wofi/scripts/cheatsheet.sh
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    floating_modifier $mod normal
+
 #
 # Moving around:
 #
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
+    # Omarchy: Super + Arrow -> Move focus to window in direction of arrow
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
+    # Vim-style navigation (kept from original config)
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    # bindsym $mod+$up focus up  # Removed: conflicts with Super+K cheatsheet
+    bindsym $mod+$right focus right
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
+    # Omarchy: Super + Shift + Arrow -> Swap window with another in direction of arrow
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-    bindsym $mod+Tab exec ~/.config/wofi/scripts/wofi-window-switcher
-    # Switch to workspace
-    bindsym $mod+$1 workspace number 1
-    bindsym $mod+$2 workspace number 2
-    bindsym $mod+$3 workspace number 3
-    bindsym $mod+$4 workspace number 4
-    bindsym $mod+$5 workspace number 5
-    bindsym $mod+$6 workspace number 6
-    bindsym $mod+$7 workspace number 7
-    bindsym $mod+$8 workspace number 8
-    bindsym $mod+$9 workspace number 9
-    bindsym $mod+$0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+$1 move container to workspace number 1
-    bindsym $mod+Shift+$2 move container to workspace number 2
-    bindsym $mod+Shift+$3 move container to workspace number 3
-    bindsym $mod+Shift+$4 move container to workspace number 4
-    bindsym $mod+Shift+$5 move container to workspace number 5
-    bindsym $mod+Shift+$6 move container to workspace number 6
-    bindsym $mod+Shift+$7 move container to workspace number 7
-    bindsym $mod+Shift+$8 move container to workspace number 8
-    bindsym $mod+Shift+$9 move container to workspace number 9
-    bindsym $mod+Shift+$0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splitv 
-    bindsym $mod+v splith
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    # Vim-style movement
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    # Omarchy: Super + Shift + Alt + Arrows -> Move workspaces to directional monitor
+    # TODO: Sway doesn't have direct equivalent
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # Omarchy: Super + Scroll Wheel -> Scroll through workspaces
+    # TODO: Not directly supported in sway config
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
 
+#
+# Workspaces:
+#
+    # Omarchy: Super + 1/2/3/4 -> Jump to specific workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+
+    # Omarchy: Super + Tab -> Jump to next workspace
+    bindsym $mod+Tab workspace next
+
+    # Omarchy: Super + Shift + Tab -> Jump to previous workspace
+    bindsym $mod+Shift+Tab workspace prev
+
+    # Omarchy: Super + Ctrl + Tab -> Jump to former workspace
+    # TODO: Sway doesn't track "former" workspace
+
+    # Omarchy: Super + Shift + 1/2/3/4 -> Move window to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+
+    # Omarchy: Super + Shift + Alt + 1/2/3/4 -> Move window to workspace without following
+    # TODO: This requires moving without switching focus
+    # bindsym $mod+Shift+Alt+$1 move container to workspace number 1; workspace number 1
+    # bindsym $mod+Shift+Alt+$2 move container to workspace number 2; workspace number 2
+
+#
+# Layout stuff:
+#
+    # Omarchy: Super + S / Super + Grave -> Toggle scratchpad
+    bindsym $mod+s scratchpad show
+
+    # Omarchy: Super + Alt + S / Super + Shift + Grave -> Move window to scratchpad
+    bindsym $mod+Alt+s move scratchpad
+
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    bindsym $mod+b splitv
+    bindsym $mod+v splith
+
+    # Switch the current container between different layout styles
+    bindsym $mod+Shift+s layout stacking
+    bindsym $mod+Shift+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Move focus to the parent container
+    # Already defined above
+
+#
+# Scratchpad (remaining original bindings):
+#
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+s move scratchpad
+    # Now bound to $mod+Alt+s (Omarchy style)
 
     # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+Alt+s scratchpad show
+    # Now bound to $mod+s (Omarchy style)
+
 #
 # Resizing containers:
 #
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize grow width 10px
-    bindsym $down resize shrink height 10px
-    bindsym $up resize grow height 10px
-    bindsym $right resize shrink width 10px
+    # Omarchy direct resize bindings (replacing resize mode)
+    # Super + Minus -> Expand window left
+    # Super + Equal -> Shrink window left
+    # Super + Shift + Minus -> Shrink window up
+    # Super + Shift + Equal -> Expand window down
+    
+    bindsym $mod+minus resize shrink width 10px
+    bindsym $mod+equal resize grow width 10px
+    bindsym $mod+Shift+minus resize shrink height 10px
+    bindsym $mod+Shift+equal resize grow height 10px
 
-    # Ditto, with arrow keys
-    bindsym Left resize grow width 10px
-    bindsym Down resize shrink height 10px
-    bindsym Up resize grow height 10px
-    bindsym Right resize shrink width 10px
+    # Omarchy: Super + Alt + Minus/Equal -> Same resizing in smaller steps
+    bindsym $mod+Alt+minus resize shrink width 1px
+    bindsym $mod+Alt+equal resize grow width 1px
+    bindsym $mod+Alt+Shift+minus resize shrink height 1px
+    bindsym $mod+Alt+Shift+equal resize grow height 1px
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
+    # Omarchy: Super + Ctrl + Minus/Equal -> Same resizing in bigger steps
+    bindsym $mod+Ctrl+minus resize shrink width 50px
+    bindsym $mod+Ctrl+equal resize grow width 50px
+    bindsym $mod+Ctrl+Shift+minus resize shrink height 50px
+    bindsym $mod+Ctrl+Shift+equal resize grow height 50px
+
+    # Omarchy: Super + Alt + Home -> Save window width
+    # Omarchy: Super + Home -> Restore saved window width
+    # TODO: Sway doesn't have direct equivalent for saving/restoring window width
+
+    # Keep original resize mode as fallback
+    mode "resize" {
+        bindsym $left resize grow width 10px
+        bindsym $down resize shrink height 10px
+        bindsym $up resize grow height 10px
+        bindsym $right resize shrink width 10px
+
+        bindsym Left resize grow width 10px
+        bindsym Down resize shrink height 10px
+        bindsym Up resize grow height 10px
+        bindsym Right resize shrink width 10px
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+r mode "resize"
+
+#
+# Mouse bindings (Omarchy style):
+#
+    # Omarchy: Super + Left Mouse -> Drag window around
+    # Omarchy: Super + Right Mouse -> Resize window
+    # These are already handled by floating_modifier $mod normal
+
+#
+# Grouping features (Omarchy specific - not available in sway):
+#
+    # Omarchy: Super + G -> Toggle window grouping
+    # TODO: Sway doesn't have window grouping
+    
+    # Omarchy: Super + Alt + G -> Move window out of grouping
+    # TODO: Not applicable
+    
+    # Omarchy: Super + Alt + Tab -> Cycle between windows in grouping
+    # TODO: Not applicable
+    
+    # Omarchy: Super + Alt + Shift + Tab -> Cycle backward between windows in grouping
+    # TODO: Not applicable
+    
+    # Omarchy: Super + Alt + 1/2/3/4/5 -> Jump to specific window in grouping
+    # TODO: Not applicable
+    
+    # Omarchy: Super + Alt + Arrow -> Move window into grouping in direction of arrow
+    # TODO: Not applicable
+    
+    # Omarchy: Super + Ctrl + Left/Right -> Move between windows inside a tiling group
+    # TODO: Not applicable
+
+#
+# Zoom features (Omarchy specific):
+#
+    # Omarchy: Super + Ctrl + Z -> Zoom in on screen
+    # TODO: Not directly applicable in sway
+    
+    # Omarchy: Super + Ctrl + Alt + Z -> Zoom fully out from screen
+    # TODO: Not directly applicable
+
+#
+# Monitor scaling:
+#
+    # Omarchy: Super + / -> Step forward through monitor scaling options
+    # Omarchy: Super + Alt + / -> Step backward through monitor scaling options
+    # TODO: These would require custom scripts to adjust monitor scaling
+
 #
 # Utilities:
 #
@@ -221,9 +356,25 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    
+    # Omarchy: Alt + Volume Up/Down -> Precise 1% volume changes
+    bindsym --locked Alt+XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -1%
+    bindsym --locked Alt+XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +1%
+    
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    
+    # Omarchy: Shift + Brightness Up -> Maximum screen brightness
+    bindsym --locked Shift+XF86MonBrightnessUp exec brightnessctl set 100%
+    
+    # Omarchy: Shift + Brightness Down -> Minimum screen brightness
+    bindsym --locked Shift+XF86MonBrightnessDown exec brightnessctl set 0%
+    
+    # Omarchy: Alt + Brightness Up/Down -> Precise 1% brightness changes
+    bindsym --locked Alt+XF86MonBrightnessDown exec brightnessctl set 1%-
+    bindsym --locked Alt+XF86MonBrightnessUp exec brightnessctl set 1%+
+
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
